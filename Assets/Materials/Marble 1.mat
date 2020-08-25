@@ -21,14 +21,13 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Marble 1
-  m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: 2f5d30741dff6e84082d5e3b64889f79, type: 3}
   m_ShaderKeywords: _EMISSION
   m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 1
-  m_CustomRenderQueue: 2000
-  stringTagMap:
-    RenderType: Opaque
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
   disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3
@@ -64,8 +63,10 @@ Material:
     m_Floats:
     - Vector1_1F6BA401: 0
     - Vector1_82784EE1: 1
+    - Vector1_BCA36AE2: 0.99
     - Vector1_BF2828A: 0
     - Vector1_E0C6DE81: 0.01
+    - Vector1_F637F407: 1.07
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1

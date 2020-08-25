@@ -1,5 +1,8 @@
-﻿using System.Collections;
+﻿using AudioVisualizer;
+using System.Collections;
 using UnityEngine;
+using UnityEngine.ProBuilder;
+using UnityEngine.UIElements;
 
 public class PlayerController : MonoBehaviour
 {
@@ -7,38 +10,19 @@ public class PlayerController : MonoBehaviour
     public bool hasPowerup;
     public bool hasDebuff;
     public float enemyForce = 5;
+    public float livesRemaining = 3;
     //private GameObject focalPoint;
 
     private Rigidbody rig;
     private float powerupStrength = 15.0f;
     public GameObject powerupIndicator;
+    public GameObject playerPrefab;
     private float initialDrag = .05f;
     private Coroutine storedPowerupCoroutine = null;
+    private Vector3 playerStartPos;
+    private MeshRenderer playerMr;
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Powerup"))
-        {
-            hasPowerup = true;
-            powerupIndicator.gameObject.SetActive(true);
-            Destroy(other.gameObject);
-            if (storedPowerupCoroutine != null)
-            {
-                StopCoroutine(storedPowerupCoroutine);
-            }
-            storedPowerupCoroutine = StartCoroutine(PowerupCountdownRoutine());
-        }
-        // if (other.CompareTag("Debuff"))
-        //{
-        //    hasDebuff = true;
-        //    rig.mag = rig.drag + 1.0f;
-        //    //TODO Debuff indicator
-        //    //powerupIndicator.gameObject.SetActive(true);
-        //   // Destroy(other.gameObject);
-        //    StartCoroutine(PowerupCountdownRoutine());
 
-        //}
-    }
 
 
     //TODO debuff countdown reoutine
@@ -71,7 +55,11 @@ public class PlayerController : MonoBehaviour
     }
     private void Start()
     {
+
         rig = GetComponent<Rigidbody>();
+        playerStartPos = rig.transform.position;
+        playerMr = GetComponent<MeshRenderer>();
+
     }
 
     private void Update()
@@ -90,7 +78,40 @@ public class PlayerController : MonoBehaviour
             Vector3 bounce = new Vector3(1, 1, 0);
             rig.AddForce(bounce * speed, ForceMode.Impulse);
         }
-
+        float xPos = rig.transform.position.x;
         powerupIndicator.transform.position = transform.position + new Vector3(0, 0.5f, 0);
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            hasPowerup = true;
+            powerupIndicator.gameObject.SetActive(true);
+            if (storedPowerupCoroutine != null)
+            {
+                StopCoroutine(storedPowerupCoroutine);
+            }
+            storedPowerupCoroutine = StartCoroutine(PowerupCountdownRoutine());
+        }
+        if ( xPos < -6 || xPos > 6)
+        {
+
+            rig.isKinematic = true;
+            playerMr.enabled = false;
+            Time.timeScale = 0;
+            RespawnPlayer();
+        }
+
+
+
+        void RespawnPlayer()
+
+
+        {
+            for (int i = 0; i < livesRemaining; i++)
+            {
+                transform.position = playerStartPos;
+                playerMr.enabled = true;
+                rig.isKinematic = false;
+            }
+        }
     }
+
 }
