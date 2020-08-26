@@ -20,6 +20,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs: []
     m_Floats:
+    - Vector1_1606E552: 2.16
     - Vector1_60DC00D9: 30
     - Vector1_E6C2B051: 0.06
     m_Colors:

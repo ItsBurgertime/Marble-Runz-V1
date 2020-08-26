@@ -44,7 +44,6 @@ public class SpawnManager : MonoBehaviour
         {
             wave++;
            SpawnEnemyWave(wave);
-           // Instantiate(powerUp, GenerateSpawnPosition(), powerUp.transform.rotation);
         }
 
 
