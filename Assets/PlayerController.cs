@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody rig;
     private float powerupStrength = 15.0f;
     public GameObject powerupIndicator;
+    public GameObject dissolveWhenDead;
     public GameObject playerPrefab;
     private float initialDrag = .05f;
     private Coroutine storedPowerupCoroutine = null;
@@ -79,7 +80,7 @@ public class PlayerController : MonoBehaviour
             rig.AddForce(bounce * speed, ForceMode.Impulse);
         }
         float xPos = rig.transform.position.x;
-        powerupIndicator.transform.position = transform.position + new Vector3(0, 0.5f, 0);
+        powerupIndicator.transform.position = transform.position + new Vector3(0, 0, 0);
         if (Input.GetKeyDown(KeyCode.Space))
         {
             hasPowerup = true;
@@ -95,8 +96,20 @@ public class PlayerController : MonoBehaviour
 
             rig.isKinematic = true;
             playerMr.enabled = false;
+            dissolveWhenDead.gameObject.SetActive(true);
             Time.timeScale = 0;
-            RespawnPlayer();
+            yield return new WaitForSeconds(3);
+
+            if(livesRemaining > 0)
+            {
+                RespawnPlayer();
+                livesRemaining--;
+            }
+            else
+            {
+                Debug.Log("Game Over");
+            }
+
         }
 
 
@@ -108,8 +121,11 @@ public class PlayerController : MonoBehaviour
             for (int i = 0; i < livesRemaining; i++)
             {
                 transform.position = playerStartPos;
+                dissolveWhenDead.gameObject.SetActive(false);
                 playerMr.enabled = true;
                 rig.isKinematic = false;
+                Time.timeScale = 1.0f;
+
             }
         }
     }

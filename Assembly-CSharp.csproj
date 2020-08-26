@@ -61,7 +61,6 @@
     <Compile Include="Assets\AudioVisualizer\Scripts\Core\SphereWaveform.cs" />
     <Compile Include="Assets\AudioVisualizer\Scripts\Core\ArcWaveform.cs" />
     <Compile Include="Assets\PlayerController.cs" />
-    <Compile Include="Assets\Scripts\SimpleCameraController.cs" />
     <Compile Include="Assets\AudioVisualizer\Scripts\Miscellaneous\Ring.cs" />
     <Compile Include="Assets\AudioVisualizer\Scripts\Core\AudioRecorder.cs" />
     <Compile Include="Assets\AudioVisualizer\Scripts\Miscellaneous\CameraMovement.cs" />
@@ -108,6 +107,7 @@
     <Compile Include="Assets\AudioVisualizer\Scripts\Core\CircleWaveform.cs" />
     <Compile Include="Assets\AudioVisualizer\Scripts\MeshWaveform.cs" />
     <Compile Include="Assets\Scripts\BackgroundRespawn.cs" />
+    <Compile Include="Assets\ForceField\Scripts\SimpleCameraController.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\AudioVisualizer\Resources\AbandonedPlaces.txt" />
