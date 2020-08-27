@@ -17,7 +17,8 @@ public class PlayerController : MonoBehaviour
     private Rigidbody rig;
     private float powerupStrength = 15.0f;
     public GameObject powerupIndicator;
-    public GameObject dissolveWhenDead;
+    public GameObject dissolveWhenDeadPrefab;
+    private GameObject dissolveSphere;
     public GameObject playerPrefab;
     private float initialDrag = .05f;
     private Coroutine storedPowerupCoroutine = null;
@@ -39,15 +40,15 @@ public class PlayerController : MonoBehaviour
     IEnumerator RespawnPlayerRoutine()
     {
         yield return new WaitForSeconds(2);
-        for (int i = 0; i < livesRemaining; i++)
-        {
-            transform.position = playerStartPos;
-            dissolveWhenDead.gameObject.SetActive(false);
-            deathEffectSpawned = false;
-            playerMr.enabled = true;
-            rig.isKinematic = false;
-            Time.timeScale = 1.0f;
-        }
+        transform.position = playerStartPos;
+        dissolveSphere.transform.position = playerStartPos;
+        yield return new WaitForSeconds(2);
+        dissolveSphere.gameObject.SetActive(false);
+        deathEffectSpawned = false;
+        playerMr.enabled = true;
+        rig.isKinematic = false;
+        Time.timeScale = 1.0f;
+        storedDeathCoroutine = null;
     }
     private void OnCollisionEnter(Collision other)
     {
@@ -67,7 +68,6 @@ public class PlayerController : MonoBehaviour
                 playerRigidbody.AddForce(playerAway * powerupStrength, ForceMode.Impulse);
             }
 
-
         }
     }
     private void Start()
@@ -76,6 +76,9 @@ public class PlayerController : MonoBehaviour
         rig = GetComponent<Rigidbody>();
         playerStartPos = rig.transform.position;
         playerMr = GetComponent<MeshRenderer>();
+        dissolveSphere = Instantiate(dissolveWhenDeadPrefab);
+        dissolveSphere.gameObject.SetActive(false);
+
 
     }
 
@@ -112,16 +115,19 @@ public class PlayerController : MonoBehaviour
             Vector3 playerDeathPos = rig.transform.position;
             rig.isKinematic = true;
             playerMr.enabled = false;
+            powerupIndicator.gameObject.SetActive(false);
+
 
             if (deathEffectSpawned == false)
             {
-                Instantiate(dissolveWhenDead, playerDeathPos, dissolveWhenDead.transform.rotation);
+                dissolveSphere.transform.position = playerDeathPos;
+                //Instantiate(dissolveWhenDead, playerDeathPos, dissolveWhenDead.transform.rotation);
+                dissolveSphere.gameObject.SetActive(true);
                 deathEffectSpawned = true;
             }
-            storedDeathCoroutine = StartCoroutine(RespawnPlayerRoutine());
             if (livesRemaining > 0 && storedDeathCoroutine == null)
             {
-                RespawnPlayerRoutine();
+                storedDeathCoroutine = StartCoroutine(RespawnPlayerRoutine());
                 livesRemaining--;
             }
             else

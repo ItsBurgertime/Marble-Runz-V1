@@ -55,8 +55,8 @@
     <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio Tools for Unity\16.0\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\AudioVisualizer\Editor\LineWaveformEditor.cs" />
-    <Compile Include="Assets\AudioVisualizer\Editor\CurveWaveformEditor.cs" />
+    <Compile Include="Assets\Course Library\AudioVisualizer\Editor\LineWaveformEditor.cs" />
+    <Compile Include="Assets\Course Library\AudioVisualizer\Editor\CurveWaveformEditor.cs" />
     <Compile Include="Assets\TutorialInfo\Scripts\Editor\ReadmeEditor.cs" />
   </ItemGroup>
   <ItemGroup>
