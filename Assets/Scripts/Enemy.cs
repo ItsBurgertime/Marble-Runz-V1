@@ -10,6 +10,7 @@ public class Enemy : MonoBehaviour
     private Rigidbody eRig;
     private GameObject player;
     public float destroyDistance = 20;
+    public float extraGravity;
     // Start is called before the first frame update
     void Start()
     {
@@ -30,6 +31,13 @@ public class Enemy : MonoBehaviour
             //Debug.Log($"distance from player: {distanceFromPlayer}, destroy distance {destroyDistance}");
             //Debug.Log($"current enemy position {transform.position}");
             Destroy(gameObject);
+        }
+        // Ensures the extra gravity is only added when we're moving down
+        if (eRig.velocity.y < 0)
+        {
+            UnityEngine.Vector3 l_newVelocity = eRig.velocity;
+            l_newVelocity.y -= extraGravity;    // add the extra gravity every frame we're moving down
+            eRig.velocity = l_newVelocity;
         }
     }
 }

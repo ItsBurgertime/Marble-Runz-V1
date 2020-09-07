@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,40 +11,50 @@ public class SpawnManager : MonoBehaviour
 
     public int enemyCount;
     public int wave = 1;
+    private bool enemyWaveInProgress;
 
 
     //Start is called before the first frame update
     void Start()
     {
-        SpawnEnemyWave(wave);
-        //Instantiate(powerUp, GenerateSpawnPosition(), powerUp.transform.rotation);
-
+        StartCoroutine(SpawnEnemyWave());
     }
 
-    void SpawnEnemyWave(int enemiesToSpawn)
+    IEnumerator SpawnEnemyWave()
     {
-        for (int i = 0; i < enemiesToSpawn;  i++)
+        if (enemyWaveInProgress == false)
         {
-            Instantiate(enemyPrefab, GenerateSpawnPosition(), enemyPrefab.transform.rotation);
+            enemyWaveInProgress = true;
+            wave = wave + 1;
+            var enemiesToSpawn = Math.Min(wave, 5);
+            yield return new WaitForSeconds(2);
+            for (int i = 0; i < enemiesToSpawn; i++)
+            {
+                Instantiate(enemyPrefab, GenerateSpawnPosition(), enemyPrefab.transform.rotation);
+            }
+            enemyWaveInProgress = false;
         }
     }
+
+
     private UnityEngine.Vector3 GenerateSpawnPosition()
     {
 
-        float spawnPosX = Random.Range(transform.position.x-4, transform.position.x + 4);
-        float spawnPosZ = transform.position.z  ;//Random.Range(-spawnRange, spawnRange);
-        UnityEngine.Vector3 randomPos = new UnityEngine.Vector3(spawnPosX, transform.position.y , spawnPosZ);
+        float spawnPosX = UnityEngine.Random.Range(transform.position.x - 8, transform.position.x + 8);
+        float spawnPosZ = transform.position.z;
+        UnityEngine.Vector3 randomPos = new UnityEngine.Vector3(spawnPosX, transform.position.y, spawnPosZ);
         return randomPos;
     }
 
     // Update is called once per frame
     void Update()
     {
+
+
         enemyCount = FindObjectsOfType<Enemy>().Length;
         if (enemyCount == 0)
         {
-            wave++;
-           SpawnEnemyWave(wave);
+            StartCoroutine(SpawnEnemyWave());
         }
 
 

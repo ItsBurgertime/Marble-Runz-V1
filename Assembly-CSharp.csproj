@@ -57,6 +57,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\AudioViz.cs" />
     <Compile Include="Assets\Course Library\AudioVisualizer\Scripts\Core\PanelWaveform.cs" />
+    <Compile Include="Assets\Course Library\ForceField\Scripts\SimpleCameraController.cs" />
     <Compile Include="Assets\Course Library\AudioVisualizer\Scripts\Core\GridWaveform.cs" />
     <Compile Include="Assets\Course Library\AudioVisualizer\Scripts\Core\SphereWaveform.cs" />
     <Compile Include="Assets\Course Library\AudioVisualizer\Scripts\Core\ArcWaveform.cs" />
@@ -107,22 +108,41 @@
     <Compile Include="Assets\Course Library\AudioVisualizer\Scripts\Core\CircleWaveform.cs" />
     <Compile Include="Assets\Course Library\AudioVisualizer\Scripts\MeshWaveform.cs" />
     <Compile Include="Assets\Scripts\BackgroundRespawn.cs" />
-    <Compile Include="Assets\Course Library\ForceField\Scripts\SimpleCameraController.cs" />
+    <Compile Include="Assets\Scripts\UIScript.cs" />
+    <Compile Include="Assets\UIScript.cs" />
   </ItemGroup>
   <ItemGroup>
+     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro.cginc" />
+     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Overlay.shader" />
+     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap.shader" />
      <None Include="Assets\Course Library\AudioVisualizer\Resources\AbandonedPlaces.txt" />
      <None Include="Assets\Course Library\AudioVisualizer\Materials\BlendTexture.shader" />
+     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />
      <None Include="Assets\Course Library\AudioVisualizer\Resources\CelestialVisitor.txt" />
+     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface.shader" />
+     <None Include="Assets\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
+     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap-Custom-Atlas.shader" />
+     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF.shader" />
+     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
      <None Include="Assets\Course Library\AudioVisualizer\Standard Assets\ParticleSystems\ParticleSystemsGuidelines.txt" />
+     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Properties.cginc" />
      <None Include="Assets\Course Library\AudioVisualizer\Standard Assets\ParticleSystems\Shaders\PriorityParticleAddSoft.shader" />
+     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Surface.cginc" />
      <None Include="Assets\Course Library\AudioVisualizer\Materials\BlendTextureLit.shader" />
+     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
      <None Include="Assets\Course Library\AudioVisualizer\Resources\ARestfulTown.txt" />
      <None Include="Assets\Course Library\AudioVisualizer\Resources\FamilyFugh.txt" />
      <None Include="Assets\Course Library\AudioVisualizer\Resources\PopDance.txt" />
      <None Include="Assets\Course Library\AudioVisualizer\Standard Assets\ParticleSystems\Shaders\PriorityParticleAdd.shader" />
      <None Include="Assets\Course Library\AudioVisualizer\Resources\PopDanceLimited.txt" />
+     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Masking.shader" />
      <None Include="Assets\Course Library\AudioVisualizer\Standard Assets\ParticleSystems\Shaders\PriorityParticleAlpha.shader" />
      <None Include="Assets\Course Library\_Source_Files\_LICENSE.txt" />
+     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF Overlay.shader" />
+     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap-Mobile.shader" />
+     <None Include="Assets\TextMesh Pro\Resources\Fonts &amp; Materials\LiberationSans - OFL.txt" />
+     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile.shader" />
+     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Sprite.shader" />
      <None Include="Assets\Course Library\AudioVisualizer\Resources\Energy.txt" />
     <Reference Include="UnityEngine">
       <HintPath>E:\Unity\2020.1.0f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>

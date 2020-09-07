@@ -131,7 +131,11 @@ MonoBehaviour:
   hasDebuff: 0
   enemyForce: 10
   livesRemaining: 3
+  extraGravity: 0
+  enemyImpact: {fileID: 8300000, guid: f3cd4aac74ecb4a1389c36e817353af8, type: 3}
+  activatePowerup: {fileID: 0}
   powerupIndicator: {fileID: 22328849162541934}
+  dissolveWhenDeadPrefab: {fileID: 0}
   playerPrefab: {fileID: 0}
 --- !u!1001 &588174783738161650
 PrefabInstance:
@@ -187,6 +191,10 @@ PrefabInstance:
     - target: {fileID: 605397841730187932, guid: 9d76cb6e402540347a09364bba4665f9, type: 3}
       propertyPath: m_Name
       value: Forcefield
+      objectReference: {fileID: 0}
+    - target: {fileID: 605397841730187932, guid: 9d76cb6e402540347a09364bba4665f9, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9d76cb6e402540347a09364bba4665f9, type: 3}
