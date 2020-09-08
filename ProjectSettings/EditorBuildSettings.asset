@@ -6,11 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Start Menu.unity
+    path: Assets/Scenes/Start Menu.unity
     guid: b8c679c915fbfa44288884fdae68f615
-  - enabled: 0
-    path: Assets/Course Library/ForceField/Scenes/SampleScene.unity
-    guid: d1c3109bdb54ad54c8a2b2838528e640
   - enabled: 1
     path: Assets/Scenes/ScenePrime.unity
     guid: 46c0c5f21e00a314992ce604e5a54ab0

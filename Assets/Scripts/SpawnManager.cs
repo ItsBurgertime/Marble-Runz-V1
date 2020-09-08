@@ -12,6 +12,8 @@ public class SpawnManager : MonoBehaviour
     public int enemyCount;
     public int wave = 1;
     private bool enemyWaveInProgress;
+    private bool gameOverUIActive;
+    public GameObject gameOverUI;
 
 
     //Start is called before the first frame update
@@ -22,18 +24,21 @@ public class SpawnManager : MonoBehaviour
 
     IEnumerator SpawnEnemyWave()
     {
+
         if (enemyWaveInProgress == false)
         {
             enemyWaveInProgress = true;
-            wave = wave + 1;
-            var enemiesToSpawn = Math.Min(wave, 5);
+            wave = Math.Min(wave, 5);
             yield return new WaitForSeconds(2);
-            for (int i = 0; i < enemiesToSpawn; i++)
+            for (int i = 0; i < wave; i++)
             {
                 Instantiate(enemyPrefab, GenerateSpawnPosition(), enemyPrefab.transform.rotation);
             }
             enemyWaveInProgress = false;
+            wave++;
+
         }
+
     }
 
 
@@ -45,17 +50,20 @@ public class SpawnManager : MonoBehaviour
         UnityEngine.Vector3 randomPos = new UnityEngine.Vector3(spawnPosX, transform.position.y, spawnPosZ);
         return randomPos;
     }
-
     // Update is called once per frame
     void Update()
     {
-
+        if (gameOverUIActive == true)
+        {
+            return;
+        }
 
         enemyCount = FindObjectsOfType<Enemy>().Length;
         if (enemyCount == 0)
         {
             StartCoroutine(SpawnEnemyWave());
         }
+
 
 
     }
